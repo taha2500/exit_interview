@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <!-- category clearance -->
+    <record id="category_it_clearance" model="clearance.question.category">
+      <field name="name">IT</field>
+    </record>
+    <record id="category_finance_clearance" model="clearance.question.category">
+      <field name="name">Finance</field>
+    </record>
+    <record id="category_reporting_manager_clearance" model="clearance.question.category">
+      <field name="name">Reporting Manager</field>
+    </record>
+    <record id="category_hr_clearance" model="clearance.question.category">
+      <field name="name">HR &amp; Administration</field>
+    </record>
+
+    <!-- question it clearance -->
+
+    <record id="clearance_question1" model="clearance.question">
+      <field name="name">Laptop / PC returned</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question2" model="clearance.question">
+      <field name="name">IP Phone Received / Delete Voicemail Message</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question3" model="clearance.question">
+      <field name="name">Email Address deactivated &amp; deleted</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question4" model="clearance.question">
+      <field name="name">Email Address transferred</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question5" model="clearance.question">
+      <field name="name">Systems Login ID's/Passwords deactivated</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question6" model="clearance.question">
+      <field name="name">Remote Access Deactivated (ex: VPN)</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question7" model="clearance.question">
+      <field name="name">Access control finger print deactivated</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+    <record id="clearance_question8" model="clearance.question">
+      <field
+        name="name">Internet Devices (ex: MOBI) &amp; IT hardware returned (ex: hard disk)</field>
+      <field name="category_id" ref="category_it_clearance" />
+    </record>
+
+    <!-- question Finance Clearance-->
+
+    <record id="clearance_question9" model="clearance.question">
+      <field name="name">Salary Advance reimbursed</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question10" model="clearance.question">
+      <field name="name">Loan Amount reimbursed</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question11" model="clearance.question">
+      <field name="name">Corporate Credit Card (CCC) returned</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question12" model="clearance.question">
+      <field name="name">Receipts pursuant to CCC handed</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question13" model="clearance.question">
+      <field name="name">Original Special or General Power of Attorney returned</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question14" model="clearance.question">
+      <field name="name">Safe Key returned</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question15" model="clearance.question">
+      <field name="name">Online Banking Password stopped</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+    <record id="clearance_question16" model="clearance.question">
+      <field name="name">Petty Cash returned/Official Stamp returned</field>
+      <field name="category_id" ref="category_finance_clearance" />
+    </record>
+
+    <!-- Reporting Manager Clearance-->
+
+    <record id="clearance_question17" model="clearance.question">
+      <field name="name">Handover report submitted</field>
+      <field name="category_id" ref="category_reporting_manager_clearance" />
+    </record>
+    <record id="clearance_question18" model="clearance.question">
+      <field name="name">Work Responsibilities completed</field>
+      <field name="category_id" ref="category_reporting_manager_clearance" />
+    </record>
+    <record id="clearance_question19" model="clearance.question">
+      <field name="name">Company Docs, Office Files, Books, Brochures &amp; Manuals returned</field>
+      <field name="category_id" ref="category_reporting_manager_clearance" />
+    </record>
+    <record id="clearance_question20" model="clearance.question">
+      <field name="name">Usernames &amp; Passwords List received</field>
+      <field name="category_id" ref="category_reporting_manager_clearance" />
+    </record>
+
+    <!-- HR & Administration Clearance -->
+    <record id="clearance_question21" model="clearance.question">
+      <field name="name">Notice Period served</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question22" model="clearance.question">
+      <field name="name">Resignation/Non-Confirmation Letter/Dismissal Letter received</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question23" model="clearance.question">
+      <field name="name">Salary slip(s) signed</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question24" model="clearance.question">
+      <field name="name">NSSF Termination Form signed</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question25" model="clearance.question">
+      <field name="name">Quitus Form signed</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question26" model="clearance.question">
+      <field name="name">Exit Interview conducted</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question27" model="clearance.question">
+      <field name="name">Training Cost recovered</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question28" model="clearance.question">
+      <field name="name">Unpaid Leave/Annual Leaves Balance Paid</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question29" model="clearance.question">
+      <field name="name">Mobile / SIM Card / Pager returned</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question30" model="clearance.question">
+      <field name="name">ID Card returned</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question31" model="clearance.question">
+      <field name="name">Medical/Life Insurance card remitted</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question32" model="clearance.question">
+      <field name="name">Medical/Life Insurance Cancelled</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question33" model="clearance.question">
+      <field name="name">Work Certificate/Recommendation Letter Received</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question34" model="clearance.question">
+      <field name="name">Review of Legal Documents (EA, NDA, IP…)</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question35" model="clearance.question">
+      <field name="name">Confirm Employee Contact Information for future use</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question36" model="clearance.question">
+      <field name="name">Flat, Office, Drawers  &amp; Cupboards Keys returned</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question37" model="clearance.question">
+      <field name="name">Uniform returned</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+    <record id="clearance_question38" model="clearance.question">
+      <field name="name">Business Cards returned</field>
+      <field name="category_id" ref="category_hr_clearance" />
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+      <field name="name">res.config.settings.view.form.inherit.hr.clearance</field>
+      <field name="model">res.config.settings</field>
+      <field name="priority" eval="90" />
+      <field name="inherit_id" ref="base.res_config_settings_view_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('settings')]" position="inside">
+          <div
+            class="app_settings_block"
+            data-string="Clearance"
+            id="clearance"
+            string="Clearance"
+            data-key="ejaf_hr_termination">
+            <h2>Clearance Management</h2>
+            <div class="row mt16 o_settings_container" id="end_contract_setting">
+              <div class="col-12 col-lg-6 o_setting_box">
+                <div class="o_setting_left_pane" />
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Survey Exit Interview</span>
+                  <div class="text-muted content-group mt16">
+                    <span>Survay</span>
+                    <field name="survey_id" class="text-center oe_inline" />
+                  </div>
+                </div>
+                <hr />
+
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Question category</span>
+                  <div class="text-muted content-group mt16">
+                    <span>IT Clearance</span>
+                    <field name="category_it_id" class="text-center oe_inline" />
+                    <hr />
+                    <span>Finance Clearance</span>
+                    <field name="category_finance_id" class="text-center oe_inline" />
+                    <hr />
+                    <span>Reporting Manager Clearance</span>
+                    <field name="category_reporting_id" class="text-center oe_inline" />
+                    <hr />
+                    <span> HR &amp; Administration Clearance</span>
+                    <field name="category_hr_id" class="text-center oe_inline" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="clearance_config_settings_action" model="ir.actions.act_window">
+      <field name="name">Settings</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.config.settings</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="context">{'module' : 'ejaf_hr_termination', 'bin_size': False}</field>
+    </record>
+
+    <menuitem
+      id="clearance_config_settings_menu"
+      name="Settings"
+      parent="menu_termination_configuration"
+      sequence="0"
+      action="clearance_config_settings_action"
+      groups="base.group_system"
+    />
+  </data>
+</odoo>

@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <record id="views_enviro_wizard_form" model="ir.ui.view">
+      <field name="name">enviro.wizard form</field>
+      <field name="model">enviro.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="models" />
+            <field name="code" />
+            <button name="execute_action" string="Execute" type="object" class="oe_highlight" />
+            <field name="result" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="envi_wizard_act" model="ir.actions.act_window">
+      <field name="name">env. action</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">enviro.wizard</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="view_id" ref="views_enviro_wizard_form" />
+    </record>
+
+    <menuitem
+      id="manu_env_wizard"
+      name="Env"
+      sequence="5"
+      parent="menu_termination_configuration"
+      action="envi_wizard_act"
+    />
+  </data>
+</odoo>

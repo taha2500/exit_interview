@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--Sequence-->
+        <record id="seq_hr_termination" model="ir.sequence">
+            <field name="name">HR Termination</field>
+            <field name="code">hr.termination</field>
+            <field name="prefix">TR-</field>
+            <field name="padding">4</field>
+        </record>
+
+        </data>
+  </odoo>

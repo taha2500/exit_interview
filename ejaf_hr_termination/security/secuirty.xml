@@ -1,0 +1,29 @@
+<odoo>
+
+
+    <record id="group_employee_clearance_first_approve" model="res.groups">
+        <field name="name">Employee Clearance: First Approve</field>
+        <field name="implied_ids" eval="[(4, ref('ejaf_hr_termination.group_termination_user'))]"/>
+    </record>
+
+    <record id="group_employee_clearance_second_approve" model="res.groups">
+        <field name="name">Employee Clearance: Second Approve</field>
+        <field name="implied_ids" eval="[(4, ref('ejaf_hr_termination.group_employee_clearance_first_approve'))]"/>
+    </record>
+
+    <record id="group_employee_clearance_third_approve" model="res.groups">
+      <field name="name">Employee Clearance: Third Approve</field>
+      <field name="implied_ids" eval="[(4, ref('ejaf_hr_termination.group_employee_clearance_second_approve'))]"/>
+    </record>
+      <record id="hr_termination_user_rule_multi_company" model="ir.rule">
+            <field name="name">HR Termination Increase Multi Company</field>
+            <field name="model_id" ref="model_hr_termination"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+
+    <record id="group_employee_clearance_forth_approve" model="res.groups">
+      <field name="name">Employee Clearance: Forth Approve</field>
+      <field name="implied_ids" eval="[(4, ref('ejaf_hr_termination.group_employee_clearance_third_approve'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="hr_termination_from_view" model="ir.ui.view">
+    <field name="name">hr.termination</field>
+    <field name="model">hr.termination</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <header>
+          <button
+            name="action_confirm"
+            type="object"
+            string="Confirm"
+            class="oe_highlight"
+            attrs="{'invisible': [('state', '!=', 'clearance')]}"
+            groups="ejaf_hr_termination.group_termination_manager"
+          />
+          <button
+            groups="ejaf_hr_termination.group_termination_manager"
+            name="action_cancel"
+            type="object"
+            string="Reset to Draft"
+            attrs="{'invisible': [('state', '=', 'draft')]}"
+          />
+
+          <button
+            string="Refuse"
+            name="action_refuse"
+            type="object"
+            states="clearance"
+            class="oe_highlight"
+            groups="ejaf_hr_termination.group_employee_clearance_first_approve,ejaf_hr_termination.group_employee_clearance_second_approve,ejaf_hr_termination.group_employee_clearance_third_approve,ejaf_hr_termination.group_employee_clearance_forth_approve,ejaf_hr_termination.group_termination_manager"
+          />
+          <button
+            string="Exit Interview"
+            name="action_send_survey"
+            type="object"
+            states="draft"
+            class="oe_highlight"
+            groups="ejaf_hr_termination.group_termination_manager"
+          />
+          <button
+            string="Clearance"
+            name="send_clearance_group"
+            type="object"
+            states="exit_interview"
+            class="oe_highlight"
+            groups="ejaf_hr_termination.group_termination_manager"
+          />
+          <!-- <button
+            string="Approve"
+            name="action_first_approve"
+            type="object"
+            states="clearance"
+            class="oe_highlight"
+          />
+          <button
+            string="Approve"
+            name="action_second_approve"
+            type="object"
+            states="first_approve"
+            class="oe_highlight"
+          />
+          <button
+            string="Approve"
+            name="action_third_approve"
+            type="object"
+            states="second_approve"
+            class="oe_highlight"
+          />
+
+          <button
+            string="Approve"
+            name="action_forth_approve"
+            type="object"
+            states="third_approve"
+            class="oe_highlight"
+          /> -->
+
+          <field
+            name="state"
+            widget="statusbar"
+            statusbar_visible="draft,exit_interview,clearance,confirmed"
+          />
+        </header>
+        <sheet>
+          <group>
+            <group>
+              <field name="company_id" invisible='1' />
+              <field name="id" invisible='1' />
+              <field name="name" readonly='1' />
+              <field name="responsible_id" readonly='1' />
+              <field name="employee_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+              <field name="termination_type_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+              <field name="job_id" />
+              <field name="dept_id" />
+              <field name="manager_id" />
+              <field name="line_manger_job_id" />
+              <field name="employee_company" />
+              <field name="employee_location" />
+            </group>
+            <group>
+              <field name="create_date" string="Creation Date" />
+              <field name="contract_start_date" readonly="1" />
+              <field name="termination_date" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+              <field name="employee_loan_amount" />
+              <field name="leaves_count" />
+              <field name="experience" />
+            </group>
+          </group>
+
+          <notebook attrs="{'invisible': [('state', '=', 'draft')]}">
+            <page
+              name="it_clearance"
+              string="Clearance"
+              attrs="{'invisible': [('state', '=', 'exit_interview')]}">
+              <field name="group_it_ids" attrs="{'readonly': [('state', '=', 'confirm')]}">
+                <tree>
+                  <field name="category_id" />
+                  <field name="confirm_by" />
+                  <field name="position_id" />
+                  <field name="confirm_date" />
+                  <field name="state" decoration-success="state=='confirm'" widget="badge" />
+                </tree>
+              </field>
+            </page>
+            <page name="exit_interview_survey" string="Exit Interview">
+              <button
+                string="Exit Interview"
+                name="action_send_survey"
+                type="object"
+                class="oe_highlight"
+              />
+              <field name="exit_interview_id" attrs="{'invisible': [('employee_id', '=', False)]}">
+                <tree
+                  decoration-success="state=='done'"
+                  decoration-info="state=='new'"
+                  decoration-warning="state=='in_progress'">
+                  <field name="survey_id" />
+                  <field name="create_date" />
+                  <field name="email" />
+                  <field
+                    name="state"
+                    decoration-success="state=='done'"
+                    decoration-info="state=='new'"
+                    decoration-warning="state=='in_progress'"
+                    widget="badge"
+                  />
+                </tree>
+              </field>
+            </page>
+          </notebook>
+          <notebook>
+            <page name="line_manager_statement" string="Line Manager Statement">
+              <field
+                name="line_manager_statement"
+                attrs="{'readonly': [('state', '=', 'confirmed')]}"
+              />
+            </page>
+            <page name="facility_manager_statement" string="Facility Statement">
+              <field
+                name="facility_manager_statement"
+                attrs="{'readonly': [('state', '=', 'confirmed')]}"
+              />
+            </page>
+            <page name="accounting_manager_statement" string="Accounting Statement">
+              <field
+                name="accounting_manager_statement"
+                attrs="{'readonly': [('state', '=', 'confirmed')]}"
+              />
+            </page>
+            <page name="it_manager_statement" string="IT Statement">
+              <field
+                name="it_manager_statement"
+                attrs="{'readonly': [('state', '=', 'confirmed')]}"
+              />
+            </page>
+            <page name="legal_manager_statement" string="Legal statement">
+              <field
+                name="legal_manager_statement"
+                attrs="{'readonly': [('state', '=', 'confirmed')]}"
+              />
+            </page>
+
+            <page name="hr_manager_statement" string="HR Statement">
+              <field
+                name="hr_manager_statement"
+                attrs="{'readonly': [('state', '=', 'confirmed')]}"
+              />
+            </page>
+          </notebook>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers" />
+          <field name="activity_ids" widget="mail_activity" />
+          <field name="message_ids" widget="mail_thread" />
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_termination_tree_view" model="ir.ui.view">
+    <field name="name">hr.termination</field>
+    <field name="model">hr.termination</field>
+    <field name="arch" type="xml">
+      <tree string="">
+        <field name="employee_id" />
+        <field name="termination_type_id" />
+        <field name="dept_id" />
+        <field name="termination_date" />
+        <field name="manager_id" />
+        <field name="state" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_hr_termination" model="ir.actions.act_window">
+    <field name="name">Employee Clearances</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">hr.termination</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        <!-- Add Text Here -->
+      </p>
+      <p>
+        <!-- More details about what a user can do with this object will be OK -->
+      </p>
+    </field>
+  </record>
+
+  <menuitem
+    id="menu_categ_terminations"
+    name="Clearance"
+    groups="ejaf_hr_termination.group_termination_user"
+    sequence="1"
+    parent="menu_hr_termination_root"
+  />
+
+  <menuitem
+    id="menu_employee_terminations"
+    name="Clearance"
+    groups="ejaf_hr_termination.group_termination_user"
+    sequence="1"
+    parent="menu_categ_terminations"
+    action="action_hr_termination"
+  />
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+    <record id="views_confirm_approw_form" model="ir.ui.view">
+      <field name="name">Approve</field>
+      <field name="model">clearance.question.group</field>
+      <field name="arch" type="xml">
+        <form>
+          <field name="question_line_ids" attrs="{'readonly': [('state', '=', 'confirm')]}">
+            <tree editable="bottom">
+              <field name="sequence" widget="handle" />
+              <field name="question_id" />
+              <field name="answer_question" invisible="1" />
+
+              <button
+                name="action_answer_question_yes"
+                class="fa fa-check btn-secondary "
+                type="object"
+                attrs="{'invisible':[('answer_question', '=', 'yes')]}"
+              />
+              <button
+                name="action_answer_question_yes"
+                class="fa fa-check  btn-success "
+                type="object"
+                attrs="{'invisible':[('answer_question', '!=', 'yes')]}"
+              />
+
+              <button
+                name="action_answer_question_no"
+                class="fa fa-close btn-secondary"
+                type="object"
+                attrs="{'invisible':[('answer_question', '=', 'no')]}"
+              />
+              <button
+                name="action_answer_question_no"
+                class="fa fa-close btn-danger"
+                type="object"
+                attrs="{'invisible':[('answer_question', '!=', 'no')]}"
+              />
+
+              <button
+                name="action_answer_question_na"
+                class="fa fa-pencil-square-o btn-secondary"
+                type="object"
+                attrs="{'invisible':[('answer_question', '=', 'na')]}"
+              />
+              <button
+                name="action_answer_question_na"
+                class="fa fa-pencil-square-o btn-warning"
+                type="object"
+                attrs="{'invisible':[('answer_question', '!=', 'na')]}"
+              />
+              <field name="answer_note" attrs="{'invisible':[('answer_question', '!=', 'na')]}" />
+            </tree>
+          </field>
+
+          <sheet>
+            <group>
+              <group>
+                <field name="note" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+              </group>
+              <group>
+                <field name="state" invisible="1" />
+                <field name="confirm_by" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                <field name="confirm_date" readonly="1" />
+                <field name="position_id" />
+                <field
+                  name="signature"
+                  widget="signature"
+                  attrs="{'readonly': [('state', '=', 'confirm')]}"
+                />
+              </group>
+            </group>
+          </sheet>
+
+          <footer>
+            <button
+              name="action_confirm"
+              string="Confirm"
+              class="btn-primary"
+              type="object"
+              attrs="{'invisible':[('state', '=', 'confirm')]}"
+            />
+          </footer>
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>

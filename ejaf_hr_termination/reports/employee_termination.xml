@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+           <template id="employee_termination">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                 <div class="page">
+                    <div style="width : 80%;margin-left : 10%;margin-right : 10%">
+                    <style>
+                        .table-info{
+                            padding: 10px;
+                            font-family: Arial, Helvetica, sans-serif;
+                            width: 100%;
+                            display: block;
+                            margin: auto
+                        }
+
+                       .table-info td{
+                            padding-bottom: 10px;
+                            padding-left: 10px;
+
+                        }
+
+                       .table-info tr td:nth-child(1), tr td:nth-child(3){
+                            padding-right: 50px;
+                        }
+                       .table-info tr td select, input[type="number"]{
+                            width: 90%;
+                            border-width: 0;
+                            border-bottom: 1px solid #000;
+                        }
+                        .table-info tr td:nth-child(2){
+                            border-right: 1px solid #000;
+
+
+                        }
+                        .table-info tr{
+                            margin-top: -20px;
+                            position: relative;
+                        }
+                        .my_td {
+                        width : 30%;
+                        font-size :12px;
+                        border-bottom: 1px solid #000;
+                        }
+                         .my_td2 {
+                        width : 20%;
+                        font-size :12px;
+                        border-bottom: 1px solid #000;
+                        }
+
+                    </style>
+                        <center><h2> Employee Termination</h2></center>
+<br/>
+                <table class="table-info">
+
+                        <tr>
+                            <td class="my_td">Employee</td>
+                            <td class="my_td2"><span t-field="o.employee_id"/></td>
+                            <td class="my_td">Creation Date</td>
+                            <td class="my_td2"><span t-esc="o.create_date.strftime('%d/%m/%y')"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="my_td">Type</td>
+                            <td class="my_td2"><span t-field="o.termination_type_id"/></td>
+
+                            <td class="my_td">Effective Date</td>
+                            <td class="my_td2"><span t-field="o.termination_date"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="my_td">Current Contact</td>
+                            <td class="my_td2"><span t-field="o.current_contract_id"/></td>
+
+                            <td class="my_td">EOS Amount</td>
+                            <td class="my_td2"><span t-field="o.eos_amount"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="my_td">Current Salary</td>
+                            <td class="my_td2"><span t-field="o.current_salary"/></td>
+
+                            <td class="my_td">Include EOS Amount</td>
+                            <td class="my_td2"><span t-field="o.include_eos_amount"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="my_td">Experience</td>
+                            <td class="my_td2"><span t-field="o.experience"/></td>
+
+                            <td class="my_td">Employee Eos Amount</td>
+                            <td class="my_td2"><span t-field="o.employee_loan_amount"/></td>
+                        </tr>
+
+                        <tr>
+                            <td class="my_td">Leaves Balance</td>
+                            <td class="my_td2"><span t-field="o.leaves_count"/></td>
+
+                            <td class="my_td"></td>
+                            <td class="my_td2"></td>
+                        </tr>
+                        <tr>
+                            <td class="my_td" style="font-size :12px;padding-top : 10px;border-bottom-width :0;">Reason</td>
+                            <td colspan="3" style="border-right-width :0;font-size :12px;padding-top : 10px;"><span t-field="o.reason"/></td>
+                        </tr>
+                        <tr>
+                            <td class="my_td" style="font-size :12px;padding-top : 10px;border-bottom-width :0;">notes</td>
+                            <td colspan="3" style="border-right-width :0; font-size :12px;padding-top : 10px;"><span t-field="o.notes"/></td>
+                        </tr>
+
+                </table>
+
+
+
+
+                    </div>
+                 </div>
+                </t>
+           </t>
+       </template>
+
+          <report
+            id="ejaf_employee_termination"
+            model="hr.termination"
+            report_type="qweb-pdf"
+            string="Termination Report"
+            name="ejaf_hr_termination.employee_termination"
+            file="ejaf_hr_termination.employee_termination"
+        />
+
+
+
+</odoo>
